@@ -1,7 +1,7 @@
 GLOBAL_ITERATIONS = 5000
 # IMPORTANT: Leave specific num 0 if you do NOT want a specific number being tested, just change the global
 # iterations. You also do NOT have to change USE_SPECIFIC.
-SPECIFIC_NUM = 0
+SPECIFIC_NUM = 5
 USE_SPECIFIC = False
 OPERATIONS = 0
 TOTAL_OPERATIONS = 0
@@ -45,12 +45,12 @@ for i in range(1, GLOBAL_ITERATIONS + 1):
                 # if it is NOT the 4 2 1 loop the program found a new loop (which nobody has ever done)
                 if used != 4 and used != 2 and used != 1:
                     foundNewLoop = True
-                    print("New loop found with " + str(int(i)))
-                    newLoopNum = i
-                # else it is the standard loop
+                if USE_SPECIFIC:
+                    newLoopNum = SPECIFIC_NUM
                 else:
-                    print("Standard 4, 2, 1 loop.")
+                    newLoopNum = i
                 # so a loop has been found
+                print("New loop found with " + str(newLoopNum) + " at " + str(num))
                 loopFound = True
                 break
     # for the new iteration loopFound is set to False
@@ -58,9 +58,10 @@ for i in range(1, GLOBAL_ITERATIONS + 1):
     print("Took " + str(int(OPERATIONS)) + " Operations")
     TOTAL_OPERATIONS = TOTAL_OPERATIONS + OPERATIONS
     OPERATIONS = 0
-print("--------------------------------------")
+
+print("|-----------|SUMMARY|-----------|")
 print("It took a total of " + str(int(TOTAL_OPERATIONS)) + " Operations")
 if foundNewLoop:
-    print("NEW LOOP HAS BEEN FOUND WITH THE NUMBER " + str(newLoopNum))
+    print("New loop has been found: " + str(newLoopNum))
 else:
-    print("No NEW loop has been found.")
+    print("No new loop has been found.")
