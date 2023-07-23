@@ -48,7 +48,7 @@ for i in range(0, GLOBAL_ITERATIONS):
             break
         # else they succeeded
         else:
-            # print("Prisoner number " + str(prisonerNum) + " survived after " + str(tries) + "tries.)
+            # print("Prisoner number " + str(prisonerNum) + " survived after " + str(tries) + " tries.")
             if prisonerNum == PRISONERS:
                 success = success + 1
 
