@@ -1,4 +1,4 @@
-# simulation of the mathematical riddle of 100 prisoners and boxes with sheet
+# simulation of the mathematical riddle of 100 prisoners and 100 boxes with sheets inside
 # Video recommendation | by Veritasium: https://www.youtube.com/watch?v=iSNsgj1OCLA
 
 # imports
@@ -10,10 +10,9 @@ fails = 0
 
 GLOBAL_ITERATIONS = 1000
 BOXES = 100
-# recommended to be same number of prisoners as boxes
+# there should be the same number of prisoners as there are boxes
 PRISONERS = BOXES
 
-# for loop (how many iterations)
 for i in range(0, GLOBAL_ITERATIONS):
     # list with all numbers of boxes
     boxList = range(1, BOXES + 1)
@@ -24,17 +23,13 @@ for i in range(0, GLOBAL_ITERATIONS):
     # list of the numbers of the prisoners
     prisonerList = range(1, PRISONERS + 1)
 
-    # for loop for every prisoner number
+    # for loop for every prisoner's number
     for prisonerNum in prisonerList:
-        # at first the box is not found; the box that has to be searched is the prisoners number; it took the
-        # prisoner 0 tries from now
         foundBox = False
         boxToSearch = prisonerNum
         tries = 0
-
-        # as long as the prisoner didn't found their box
+        
         while not foundBox:
-            # they try
             tries = tries + 1
             # the value of the box is the index of the box to search - 1 in the sheetList (which is randomized)
             boxValue = sheetList[boxToSearch - 1]
@@ -46,14 +41,14 @@ for i in range(0, GLOBAL_ITERATIONS):
             else:
                 boxToSearch = boxValue
 
-        # if they took more than half tries than there are boxes
+        # if they need more tries than there are boxes/2
         if tries >= BOXES/2:
-            # print("Everyone died after " + str(tries) + " tries by prisoner number " + str(prisonerNum))
+            # print("Everyone died after " + str(tries) + " tries by prisoner number " + str(prisonerNum) ".")
             fails = fails + 1
             break
         # else they succeeded
         else:
-            # print("Survived after " + str(tries) + " tries by prisoner number " + str(prisonerNum))
+            # print("Prisoner number " + str(prisonerNum) + " survived after " + str(tries) + "tries.)
             if prisonerNum == PRISONERS:
                 success = success + 1
 
